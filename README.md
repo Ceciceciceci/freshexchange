@@ -1,11 +1,11 @@
-# Getting Started with Create React App
+# HI WELCOME TO FRESH EXCHANGE
+A desktop app to allow pepole to share extra produce with others near by. This is just prototype code.
 
+# How to start the project: 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
-
 In the project directory, you can run:
-
 ### `yarn start`
 
 Runs the app in the development mode.\
