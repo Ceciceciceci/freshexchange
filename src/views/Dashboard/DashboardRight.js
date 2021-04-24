@@ -7,7 +7,10 @@ import chatemoji from '../../images/icons/chatemoji.svg';
 import orange from '../../images/illusvg/orange.svg';
 import orange1 from '../../images/orange1.png';
 import orange2 from '../../images/orange2.png';
-import orange3 from '../../images/orange3.png';
+import bokchoy from '../../images/bokchoy.jpeg';
+import purpletomato from '../../images/purpletomato.jpeg';
+import kale from '../../images/kale.png';
+import banana from '../../images/banana.png';
 import butterlettuce from '../../images/illusvg/butterlettuce.svg';
 import herb from '../../images/illusvg/herb.svg';
 import searchicon from '../../images/icons/searchicon.svg';
@@ -203,16 +206,10 @@ const Line = styled.div`
 export default function DashboardRight(props){
 
   console.log(pickUpListings);
+
+  const baseUrl = "../images";
+
   let pickUpBox = pickUpListings.pickuplist.map((produce) => {
-    return( 
-      <BigCard key={produce._id} id={produce._id} 
-               imgUrl={orange1} produceName={produce.produceName} 
-               postOwner={produce.postOwner} postDesc={produce.postDesc} 
-               expireDate={produce.expireDate} postDateLast={produce.postDateLast} 
-               mileAway={produce.mileAway} produceType={produce.produceType} />
-    )
-  });
-  let tradeBox = tradeListings.tradelist.map((produce) => {
     return( 
       <BigCard key={produce._id} id={produce._id} 
                imgUrl={orange2} produceName={produce.produceName} 
@@ -221,10 +218,19 @@ export default function DashboardRight(props){
                mileAway={produce.mileAway} produceType={produce.produceType} />
     )
   });
+  let tradeBox = tradeListings.tradelist.map((produce) => {
+    return( 
+      <BigCard key={produce._id} id={produce._id} 
+               imgUrl={kale} produceName={produce.produceName} 
+               postOwner={produce.postOwner} postDesc={produce.postDesc} 
+               expireDate={produce.expireDate} postDateLast={produce.postDateLast} 
+               mileAway={produce.mileAway} produceType={produce.produceType} />
+    )
+  });
   let requestBox = requestListings.requestlist.map((produce) => {
     return( 
       <BigCard key={produce._id} id={produce._id} 
-               imgUrl={orange3} produceName={produce.produceName} 
+               imgUrl={banana} produceName={produce.produceName} 
                postOwner={produce.postOwner} postDesc={produce.postDesc} 
                expireDate={produce.expireDate} postDateLast={produce.postDateLast} 
                mileAway={produce.mileAway} produceType={produce.produceType} />
@@ -257,6 +263,21 @@ export default function DashboardRight(props){
             <div className="latest-header"><h2>Latest Pick Up</h2><span>View more</span></div>
               <Line />
               <div className="pickup-box">
+                <BigCard key='1' id='1'
+                  imgUrl={orange1} produceName='Oranges'
+                  postOwner='Lynn Tran' postDesc='Hi, I have 4 sweet oranges to trade.'
+                  expireDate='3' postDateLast='4'
+                  mileAway='0' produceType='fruit' />
+                  <BigCard key='2' id='2'
+                  imgUrl={bokchoy} produceName='Bok Choy'
+                  postOwner='Jennie Chu' postDesc='Have a few bok chok plant left over. At locker.'
+                  expireDate='3' postDateLast='4'
+                  mileAway='0' produceType='veggie' />
+                  <BigCard key='3' id='3'
+                  imgUrl={purpletomato} produceName='Purple Tomato'
+                  postOwner='Kim Hardstone' postDesc='Have a couple purple tomatoes over here.'
+                  expireDate='3' postDateLast='4'
+                  mileAway='0' produceType='veggie' />
                   {pickUpBox}
               </div>
             </div>

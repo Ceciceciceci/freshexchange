@@ -75,28 +75,11 @@ export default function PersonalForm(props){
   let inputStatus = 'default';
   let required= true;
 
+  let history = useHistory();
+
   function handleNext(e){
     let falseFlag = false;
-    // if (!nameRef.current.value){
-    //   return setError("Enter your full name");
-    //   falseFlag = true;
-    // }
-    // if (!emailRef.current.value){
-    //   return setError("Enter an email");
-    //   falseFlag = true;
-    // }
-    // if (!pwdRef.current.value){
-    //   return setError("Enter a password");
-    //   falseFlag = true;
-    // }
-    // if (pwdRef.current.value !== pwd2Ref.current.value) {
-    //   return setError("Passwords do not match");
-    //   falseFlag = true;
-    // }
-
-    if(!falseFlag){
-      setStep(3);
-    }
+    history.push('/dashboard');
   }
 
   let checked = false;

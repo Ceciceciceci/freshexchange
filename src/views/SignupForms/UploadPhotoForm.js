@@ -59,23 +59,6 @@ export default function PersonalForm(props){
 
   function handleNext(e){
     let falseFlag = false;
-    // if (!nameRef.current.value){
-    //   return setError("Enter your full name");
-    //   falseFlag = true;
-    // }
-    // if (!emailRef.current.value){
-    //   return setError("Enter an email");
-    //   falseFlag = true;
-    // }
-    // if (!pwdRef.current.value){
-    //   return setError("Enter a password");
-    //   falseFlag = true;
-    // }
-    // if (pwdRef.current.value !== pwd2Ref.current.value) {
-    //   return setError("Passwords do not match");
-    //   falseFlag = true;
-    // }
-
     if(!falseFlag){
       setStep(3);
     }
@@ -93,10 +76,10 @@ export default function PersonalForm(props){
       <form>
         <input type="file" id="myFile" name="filename"/>
         <div className="button-group">
-          <button className="" onClick={() => setStep(1)}>
+          <button className="" onClick={() => setStep(2)}>
             Back
           </button>
-          <button className="" onClick={() => setStep(3)}>
+          <button className="" onClick={() => setStep(4)}>
             Next
           </button>
         </div>

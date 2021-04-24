@@ -9,6 +9,8 @@ import AddressForm from '../views/SignupForms/AddressForm';
 import UploadPhotoForm from '../views/SignupForms/UploadPhotoForm';
 import TermsForm from '../views/SignupForms/TermsForm';
 
+import LoadingScreen from '../views/LoadingScreen';
+
 //images
 import tomato from '../images/illusvg/tomato.svg';
 import orange from '../images/illusvg/orange.svg';
@@ -168,31 +170,6 @@ export default function Signup(){
 
   const [step, setStep] = useState(1);
   const [error, setError] = useState();
-  // const [loading, setLoading] = useState(false);
-  // const history = useHistory();
-
-  // let required = true;
-  // let notRequired = false;
-
-  // async function handleSubmit(e) {
-  //   e.preventDefault()
-
-  //   if (pwdRef.current.value !== pwd2Ref.current.value) {
-  //     return setError("Passwords do not match");
-  //   }
-
-  //   try {
-  //     console.log("intry");
-  //     setError("");
-  //     setLoading(true);
-  //     await signup(emailRef.current.value, pwdRef.current.value)
-  //     history.push("/dashboard")
-  //   } catch {
-  //     setError("Failed to create an account")
-  //   }
-
-  //   setLoading(false)
-  // }
 
   return(
       <SignupWrapper>

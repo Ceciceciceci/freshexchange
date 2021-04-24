@@ -1,5 +1,8 @@
+import {useState} from 'react';
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
+import useForm from '../redux/Form/useForm';
+
 import TextInput from '../components/TextInput';
 import LoadingScreen from '../views/LoadingScreen';
 
@@ -158,49 +161,80 @@ const FormWrapper = styled.form`
     flex-direction: column;
     align-items: center;
   }
+  form button{
+    outline: 0px solid white;
+  }
 `;
 
 export default function Login(){
 
   let inputStatus = 'default';
-  return(
-    <LoginWrapper>
-      <LoginLeft>
-        <FruitBg>
-          <img className="orange" src={orange} alt="fruit"/>
-          <img className="blue" src={blueberries} alt="fruit"/>
-          <img className="tomato" src={tomato} alt="fruit"/>
-          <img className="lemon" src={lemon} alt="fruit"/>
-          <img className="lettuce" src={lettuce} alt="fruit"/>
-          <img className="cherry" src={cherry} alt="fruit"/>
-          <img className="grapes" src={grapes} alt="fruit"/>
-          <img className="carrot" src={carrot} alt="fruit"/>
-          <img className="limes" src={limes} alt="fruit"/>
-        </FruitBg>
-        <h1>Fresh Exchange</h1>
-        <p>Pick up.  Trade. Request. Sell. Donate near by.</p>
-      </LoginLeft>
-      
-      <LoginRight>
-        <div><Link to='/'>Back to Home</Link></div>
-        <FormWrapper>
-          <FormHeader>
-            <h4>WELCOME,</h4>
-            <h2>LOG IN</h2>
-            <p>Welcome back!</p>
-          </FormHeader>
-          <form>
-            <TextInput inputType="text" inputId={`email ${inputStatus}`} fieldName="email" inputValue="" placeholder='Enter email'/>
-            <TextInput inputType="password" inputId={`password ${inputStatus}`} fieldName="password" inputValue="" placeholder='Enter password'/>
-            <Link to='/dashboard'><button className="" >
-              Submit
-            </button></Link>
-          </form>
-          <br></br>
-          <p>Don't have an account? <Link to='/signup'>SIGN UP</Link></p>
-        </FormWrapper>
-      </LoginRight>
-    </LoginWrapper>
+  const { handleChange, values, handleSubmit, errors } = useForm();
 
+
+  const [loading, setLoading] = useState(false);
+  let history = useHistory();
+  let loadingscreen;
+
+  if (loading) {
+    loadingscreen = <LoadingScreen loading={loading}/>;
+  } else {
+    loadingscreen = null;
+  }
+
+  const timeLoad = (e) =>{
+    e.preventDefault();
+    // handleSubmit(e);
+
+    setLoading(true);
+    setTimeout(
+      function(){ 
+        setLoading(false);
+        history.push('./dashboard');
+      }, 2500);
+  }
+
+  return(
+    <>
+      {loadingscreen}
+    
+      <LoginWrapper>
+        <LoginLeft>
+          <FruitBg>
+            <img className="orange" src={orange} alt="fruit"/>
+            <img className="blue" src={blueberries} alt="fruit"/>
+            <img className="tomato" src={tomato} alt="fruit"/>
+            <img className="lemon" src={lemon} alt="fruit"/>
+            <img className="lettuce" src={lettuce} alt="fruit"/>
+            <img className="cherry" src={cherry} alt="fruit"/>
+            <img className="grapes" src={grapes} alt="fruit"/>
+            <img className="carrot" src={carrot} alt="fruit"/>
+            <img className="limes" src={limes} alt="fruit"/>
+          </FruitBg>
+          <h1>Fresh Exchange</h1>
+          <p>Pick up.  Trade. Request. Sell. Donate near by.</p>
+        </LoginLeft>
+        
+        <LoginRight>
+          <div><Link to='/'>Back to Home</Link></div>
+          <FormWrapper>
+            <FormHeader>
+              <h4>WELCOME,</h4>
+              <h2>LOG IN</h2>
+              <p>Welcome back!</p>
+            </FormHeader>
+            <form>
+              <TextInput inputType="text" inputId={`email ${inputStatus}`} fieldName="email" inputValue={values.email} placeholder='Enter email' onChange={handleChange}/>
+              <TextInput inputType="password" inputId={`password ${inputStatus}`} fieldName="password" inputValue={values.password} placeholder='Enter password' onChange={handleChange}/>
+              <button type='submit' className="" onClick={(e) => timeLoad(e)}>
+                Submit
+              </button>
+            </form>
+            <br></br>
+            <p>Don't have an account? <Link to='/signup'>SIGN UP</Link></p>
+          </FormWrapper>
+        </LoginRight>
+      </LoginWrapper>
+    </>
   )
 }

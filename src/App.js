@@ -8,6 +8,7 @@ import Dashboard from './views/Dashboard';
 import AuthProvider from "./contexts/AuthContext";
 
 
+
 const LangSelect = styled.select`
     background-color: transparent;
     position: absolute;
@@ -55,7 +56,7 @@ function App() {
                 )} />
             <Route path="/signup" component={Signup}></Route>
             <Route path="/login" component={Login}></Route>
-            <Route exact path="/dashboard" render={(props) => (
+            <Route path="/dashboard" render={(props) => (
                 <Dashboard {...props} setLangShow={setLangShow} isAuthed={true}/>
                 )} />
           </Switch>

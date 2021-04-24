@@ -10,6 +10,7 @@ const CardWrapper = styled.div`
   margin-bottom: 15px;
   background-color: var(--beige);
   border-radius: 25px;
+  cursor: pointer;
 
   .card-container{
     display: flex;
@@ -19,14 +20,14 @@ const CardWrapper = styled.div`
 
   .imgag{
     width: 40%;
-    height: auto;
     background-color: var(--yelloworange);
     border-radius: 25px 0px 0px 25px;
     overflow: hidden;
+    position: relative;
   }
   .imgag img{
     height: 100%;
-    width: 170%;
+    width: 100%;
   }
   .card-body{
     width: 60%;
@@ -68,13 +69,13 @@ const CardBody = styled.div`
 
 export default function BigCard(props){
   const {imgUrl, produceName, postOwner, postDesc, expireDate, postDateLast, mileAway, produceType} = props;
-
+    console.log("imgULR:: ", imgUrl);
   let produceTypeImg = produceType === 'fruit' ? <img className="produceIcon" src={orange} alt='fruit'/> : <img className="produceIcon" src={butterlettuce} alt='veggie'/>
 
   return(
     <CardWrapper>
       <div className="card-container">
-        <div className="imgag"><img className="imgag" src={imgUrl} alt={produceName} /></div>
+        <div className="imgag"><img className="imgag" src={ imgUrl } alt={produceName} /></div>
         <div className="card-body">
           <CardHeader>
             <h4>{produceName}</h4>
